@@ -2,11 +2,19 @@ CREATE DATABASE agenda_de_contatos;
 
 USE agenda_de_contatos;
 
+CREATE TABLE tb_usuario (
+id_usuario INT NOT NULL AUTO_INCREMENT,
+nome_usuario VARCHAR (60) NOT NULL,
+senha VARCHAR (100) NOT NULL,
+PRIMARY KEY (id_usuario)
+);
+
+
 CREATE TABLE tb_contato (
 id_contato INT NOT NULL AUTO_INCREMENT,
 nome_contato VARCHAR (60) NOT NULL,
-endereco VARCHAR(200),
-PRIMARY KEY (id_contato)
+endereco TEXT,
+PRIMARY KEY (id_contato),
 );
 
 
