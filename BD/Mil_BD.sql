@@ -3,6 +3,7 @@ CREATE DATABASE agenda_de_contatos;
 USE agenda_de_contatos;
 
 CREATE TABLE tb_usuario (
+
 id_usuario INT NOT NULL AUTO_INCREMENT,
 nome_usuario VARCHAR (60) NOT NULL,
 senha VARCHAR (100) NOT NULL,
@@ -12,9 +13,11 @@ PRIMARY KEY (id_usuario)
 
 CREATE TABLE tb_contato (
 id_contato INT NOT NULL AUTO_INCREMENT,
+id_usuario INT NOT NULL
 nome_contato VARCHAR (60) NOT NULL,
 endereco TEXT,
 PRIMARY KEY (id_contato),
+FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario);
 );
 
 
@@ -37,3 +40,6 @@ id_notas INT NOT NULL AUTO_INCREMENT,
 nota VARCHAR (60) NOT NULL,
 PRIMARY KEY (id_notas)
 );
+
+
+
