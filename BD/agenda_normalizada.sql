@@ -1,3 +1,4 @@
+ 
 CREATE DATABASE agenda;
 
 USE agenda;
@@ -16,8 +17,7 @@ id_usuario INT NOT NULL,
 numero_contato VARCHAR (30) NOT NULL,
 endereco VARCHAR (255),
 email_contato VARCHAR (100), 
-PRIMARY KEY (id_contato),
-FOREIGN KEY (id_usuario) REFERENCES tb_usuario (id_usuario)
+PRIMARY KEY (id_contato)
 );
 
 
