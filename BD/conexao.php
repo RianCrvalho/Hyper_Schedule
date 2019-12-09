@@ -4,10 +4,10 @@ Class conexao{
 
 	function __construct(){
 		try {
-			$this->conec = new PDO("mysql:hostname=localhost;dbname=agenda","root","root");
+			$this->conec = new PDO("mysql:hostname=localhost;dbname=agenda","root","");
 			
 		} catch (Exception $e) {
-			echo "Erro".$e;
+			echo "Nao foi home".$e;
 			
 		}
 	}

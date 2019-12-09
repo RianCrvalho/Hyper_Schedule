@@ -12,9 +12,9 @@
   	$this->conn = new conexao();
 
   }
-  function View(){
+  function userView(){
   	$sql = "SELECT * FROM usuario";
-  	$d = $this->conn-> Conect();
+  	$d = $this->conn->Conect();
   	$dados = $d->prepare($sql);
   	$dados->execute();
   	return $dados;
@@ -24,9 +24,9 @@
   	$this->dados->setNome($nome_usr);
   	$this->dados->setSenha($senha_usr);
   	$sql = "INSERT INTO usuario(nome_usr,senha_usr) VALUES (:nome_usr,:senha_usr);";
-  	$d = $this->conn-> Conect();
+  	$d = $this->conn->Conect();
   	$dados = $d->prepare($sql);
-  	$dados->bindValue(":name_usr", $this->dados->getNome());
+  	$dados->bindValue(":nome_usr", $this->dados->getNome());
   	$dados->bindValue(":senha_usr", $this->dados->getSenha());
   	$dados->execute();
   	header("Location: ../View/Usuario_View.php");

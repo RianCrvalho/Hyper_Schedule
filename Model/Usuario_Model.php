@@ -1,8 +1,8 @@
 <?php
  Class Usuario_Model{
- 	public $id_usr;
- 	public $nome_usr;
- 	public $senha_usr;
+ 	private $id_usr;
+ 	private $nome_usr;
+ 	private $senha_usr;
 
  	function __construct(){
  		$this->id_usr = 0;
