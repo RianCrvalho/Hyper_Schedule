@@ -12,15 +12,22 @@ PRIMARY KEY (id_usr)
 
 CREATE TABLE contato (
 id_cont INT NOT NULL AUTO_INCREMENT,
-id_usr int NOT NULL,
+id_usr INT NOT NULL,
 nome_cont VARCHAR(30) NOT NULL,
 numero_cont VARCHAR (30) NOT NULL,
-endereco VARCHAR (255),
 email_cont VARCHAR (100), 
 PRIMARY KEY (id_cont),
 FOREIGN KEY(id_usr) REFERENCES usuario(id_usr)
 );
 
+CREATE TABLE endereco(
+id_endereco INT NOT NULL AUTO_INCREMENT,
+id_cont INT  NOT NULL,	
+rua VARCHAR (100),
+numero VARCHAR (6),
+cep VARCHAR (10),
+FOREIGN  KEY (id_cont) REFERENCES contato (id_cont)
+);
 
 CREATE TABLE notas(
 id_nota INT NOT NULL AUTO_INCREMENT,
@@ -56,5 +63,3 @@ Insert into contato(id_usr,nome_cont,numero_cont,endereco,email_cont) values ("2
 --Inserções notas--
 Insert into notas(id_usr,data_nota,nota) values ("1","2019-12-13","Vai da certo");
 Insert into notas(id_usr,data_nota,nota) values ("2","2019-11-14","Já deu foi certo");
-
-
