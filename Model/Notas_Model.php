@@ -1,6 +1,7 @@
 <?php
  Class Notas_Model{
  	public $id_nota;
+ 	public $id_usr;
  	public $data_nota;
  	public $nota;
 
@@ -15,6 +16,12 @@
  	function getId(){
  		return $this->id_nota;
  	}
+	function setIdUsr($id_usr){
+		$this->id_usr = $id_usr;
+	}
+	function getIdUsr(){
+		retrun $this->id_usr;
+	} 	
  	function setData($data_nota){
  		$this->data_nota= $data_nota;
  	}

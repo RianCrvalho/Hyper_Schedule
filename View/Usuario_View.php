@@ -14,11 +14,7 @@
 <?php
 include_once("../Control/Usuario_Control.php");
 $usuario = new Usuario_Control();
-try {
-	$dados= $usuario->userView();
-} catch (Exception $e) {
-	echo "erro de objeto";
-}
+$dados= $usuario->userView();
 if(@$_POST['btn']== 'btn1'){
   	$nome_usr = $_POST['nome_usr'];
  	$senha_usr = $_POST['senha_usr'];
@@ -42,8 +38,8 @@ echo "</table>";
  ?> <fieldset>
 		<legend>Cadrastro</legend>
 		<form method="POST">     
-       Nome: <input type="text" name="nome_usr" value="nome_usr">
-       Senha: <input type="text" size='10' name="senha_usr" value="senha_usr" >
+       Nome: <input type="text" name="nome_usr" value="">
+       Senha: <input type="text" size='10' name="senha_usr" value="" >
        <button class='btn btn-info' name="btn" value="btn1"> Cadastrar </button>
        <button class='btn btn-success' name="btn" value="btn2"> Atualizar </button>
     </form> 

@@ -1,7 +1,7 @@
 <?php
-
 Class contato{
 	public $id_cont;
+	public $id_usr;
 	public $numero_con;
 	public $endereco;
 	public $email_cont;
@@ -16,6 +16,12 @@ Class contato{
 	}
 	function getId(){
 		retrun $this->id_cont;
+	}
+	function setIdUsr($id_usr){
+		$this->id_usr = $id_usr;
+	}
+	function getIdUsr(){
+		retrun $this->id_usr;
 	}
 	function setNumero($numero_cont){
 		$this->numero_cont = $numero_cont;

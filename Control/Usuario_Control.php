@@ -6,7 +6,6 @@
   	public $dados;
   	public $conn;
 
-}  
   function __construct(){
   	$this->dados = new Usuario_Model();
   	$this->conn = new conexao();
@@ -15,7 +14,7 @@
   function userView(){
   	$sql = "SELECT * FROM usuario";
   	$d = $this->conn->Conect();
-  	$dados = $d->prepare($sql);
+  	$dados =$d->prepare($sql);
   	$dados->execute();
   	return $dados;
 
@@ -33,5 +32,5 @@
 
   }
 
-
+}
   ?>
