@@ -21,12 +21,12 @@ FOREIGN KEY(id_usr) REFERENCES usuario(id_usr)
 );
 
 CREATE TABLE endereco(
-id_endereco INT NOT NULL AUTO_INCREMENT,
+id_end INT NOT NULL AUTO_INCREMENT,
 id_cont INT  NOT NULL,	
 rua VARCHAR (100),
 numero VARCHAR (6),
 cep VARCHAR (10),
-PRIMARY KEY(id_endereco),
+PRIMARY KEY(id_end),
 FOREIGN  KEY (id_cont) REFERENCES contato (id_cont)
 );
 

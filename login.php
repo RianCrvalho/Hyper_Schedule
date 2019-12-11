@@ -1,10 +1,8 @@
-
 <?php
-
 session_start(); 
- 
- ?>
 
+include("Control/Usuario_Control.php"); 
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +17,8 @@ session_start();
 	<fieldset>
 		<legend>Login</legend>
 		<form method="POST">     
-       Nome: <input type="text" name="nome_usr" value="">
-       Senha: <input type="text" size='10' name="senha_usr" value="" >
+       Nome: <input type="text" name="nome_usr">
+       Senha: <input type="text" size='10' name="senha_usr">
        <button class='btn btn-info' name="btn" value="btn1"> Entrar </button>
     </form> 
   </fieldset>
