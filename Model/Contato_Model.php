@@ -1,5 +1,5 @@
 <?php
-Class contato{
+Class Contato_Model{
 	public $id_cont;
 	public $id_usr;
 	public $nome_cont;

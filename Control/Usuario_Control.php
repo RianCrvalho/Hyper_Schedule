@@ -11,6 +11,7 @@
   	$this->conn = new conexao();
 
   }
+
   function userView(){
   	$sql = "SELECT * FROM usuario";
   	$d = $this->conn->Conect();
@@ -19,6 +20,7 @@
   	return $dados;
 
   }
+
   function add($nome_usr,$senha_usr){
   	$this->dados->setNome_usr($nome_usr);
   	$this->dados->setSenha_usr($senha_usr);
@@ -31,6 +33,26 @@
   	header("Location: ../View/Usuario_View.php");
 
   }
+  
+  function logar($nome_usr, $senha_usr){
+      $this->dados->setNome_usr($nome_usr);
+      $this->dados->setSenha_usr($senha_usr);
 
+      $sql = "select id_usr, nome_usr from usuario where user = :nome_usr and senha = :senha_usr;";
+
+      $d = $this->conexao->Conect();
+      $dados = $d->prepare($sql);
+      $dados->bindValue(":nome_usr", $this->dados->getNome_usr());
+      $dados->bindValue(":senha_usr", $this->dados->getSenha_usr());
+      $dados->execute();
+      
+      $users = $dados->fetchAll();
+      
+      if(count($users) <= 0){
+          header('Location: ../login.php');
+      }else{
+          header("Location: ../View/Teste.php");
+      }
+  }
 }
-  ?>
+?>

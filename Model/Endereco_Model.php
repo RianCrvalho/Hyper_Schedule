@@ -11,7 +11,7 @@
  		$this->id_cont = 0;
  		$this->rua = "sem rua";
  		$this->cep = "sem";
- 		$this->numero = "sem numero";
+ 		$this->numero ="sem";
  	}
  	function setId_end($id_end){
  		$this->id_end=$id_end;

@@ -29,5 +29,4 @@
  		return $this->senha_usr;
  	}
  }
-
   ?>
