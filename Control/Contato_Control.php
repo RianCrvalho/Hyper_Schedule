@@ -36,7 +36,7 @@
   }
 
   function del($id_cont){
-    $sql = "DELETE FROM contato WHERE id_cont = :id_cont";
+    $sql = "DELETE FROM contato WHERE id = :id_cont";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_cont", $this->dados->getId_cont());
