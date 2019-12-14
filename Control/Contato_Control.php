@@ -4,12 +4,10 @@
   Class Contato_Control{
   	public $dados;
   	public $conn;
-
   function __construct(){
   	$this->dados = new Contato_Model();
   	$this->conn = new conexao();
   }
-
   function contView(){
   	$sql = "SELECT * FROM conato";
   	$d = $this->conn->Conect();
@@ -17,8 +15,6 @@
   	$dados->execute();
   	return $dados;
   }
-
-
   function add($id_usr,$nome_cont,$numero_con,$email_cont){
   	$this->dados->setId_usr($id_usr);
   	$this->dados->setNome_cont($nome_cont);
@@ -34,16 +30,14 @@
   	$dados->execute();
   	header("Location: ../View/Contato_View.php");
   }
-
   function del($id_cont){
-    $sql = "DELETE FROM contato WHERE id = :id_cont";
+    $sql = "DELETE FROM contato WHERE id_cont  = :id_cont";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_cont", $this->dados->getId_cont());
     $dados->execute();
     header("Location: ../View/Contato_View.php");
   }
-
     function upd($id_cont, $nome_cont,$numero_con,$email_cont){
     $sql = "UPDATE contato  SET nome_cont = :nome_cont, numero_cont = :numero_con, email_cont = :email_cont WHERE id_cont = :id_cont";
     $d = $this->conn->Conect();
@@ -55,6 +49,5 @@
     $dados->execute();
     header("Location: ../View/Contato_View.php");
   }
-
 }
 ?>
