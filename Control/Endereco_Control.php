@@ -10,7 +10,7 @@
   	$this->conn = new conexao();
   }
 
-  function endView(){
+  function endView($id_cont){
   	$sql = "SELECT * FROM endereco WHERE id_cont =:id_cont";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
