@@ -11,9 +11,10 @@
   }
 
   function notView(){
-  	$sql = "SELECT * FROM notas";
+  	$sql = "SELECT * FROM notas WHERE id_usr =:id_usr";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
+    $dados->bindValue(":id_usr", $id_usr);
   	$dados->execute();
   	return $dados;
   }
@@ -42,7 +43,7 @@
     header("Location: ../View/Notas_View.php");
   }
 
-  function upd($id_usr, $id_nota, $data_nota,$nota){
+    function upd($id_usr, $id_nota, $data_nota,$nota){
     $sql = "UPDATE notas  SET id_usr = :id_usr, data_nota = :data_nota, nota = :nota WHERE id_nota = :id_nota";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
