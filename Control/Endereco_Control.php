@@ -39,7 +39,7 @@
     $sql = "DELETE FROM endereco WHERE id_end = :id_end";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
-    $dados->bindValue(":id_end", $this->dados->getId_end());
+    $dados->bindValue(":id_end", $id_end);
     $dados->execute();
     header("Location: ../View/Endereco_View.php");
   }
