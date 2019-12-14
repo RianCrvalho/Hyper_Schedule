@@ -11,9 +11,10 @@
   }
 
   function endView(){
-  	$sql = "SELECT * FROM endereco";
+  	$sql = "SELECT * FROM endereco WHERE id_cont =:id_cont";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
+    $dados->bindValue(":id_cont", $id_cont);
   	$dados->execute();
   	return $dados;
   }
