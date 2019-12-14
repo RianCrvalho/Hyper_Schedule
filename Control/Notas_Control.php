@@ -10,7 +10,7 @@
   	$this->conn = new conexao();
   }
 
-  function notView(){
+  function notView($id_usr){
   	$sql = "SELECT * FROM notas WHERE id_usr =:id_usr";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
