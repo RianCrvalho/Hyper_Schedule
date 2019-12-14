@@ -8,10 +8,11 @@
   	$this->dados = new Contato_Model();
   	$this->conn = new conexao();
   }
-  function contView(){
-  	$sql = "SELECT * FROM conato";
+  function contView($id_cont){
+  	$sql = "SELECT * FROM conato WHERE id_cont = :id_cont";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
+    $dados->bindValue(":id_cont", $id_cont);
   	$dados->execute();
   	return $dados;
   }
