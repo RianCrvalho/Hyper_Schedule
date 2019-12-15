@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +16,12 @@
             text-align: center;
         }
     </style>
-    <?php 
+
+ <header>
+       <h1>Agenda</h1> 
+    </header>
+    <main>
+         <?php 
     include("../Control/Usuario_Control.php");
     $usuario = new Usuario_Control(); 
     if (isset ( $_POST [ 'btn-logar' ])) {
@@ -24,12 +30,8 @@
         $usuario->logar($nome_usr, $senha_usr);
 }
 ?>
- <header>
-       <h1>Agenda</h1> 
-    </header>
-    <main>
         <div id="div_login" class="container">
-            <form method="get">
+            <form method="POST">
                 <div class="form-group">
                     <label for="user">Usuário:</label>
                     <input type="text" id="user" name="campo_usuario" class="form-control">
@@ -40,6 +42,7 @@
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-logar" class="btn btn-success" value="btn1">Enviar</button>
+                    &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
                     <a href="cadastro.php">Cadastrar</a>
                 </div>
             </form>
