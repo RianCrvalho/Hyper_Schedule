@@ -46,14 +46,15 @@
       $dados->bindValue(":senha_usr", $this->dados->getSenha_usr());
       $dados->execute();
       
-       $users = $dados->fetchAll();
+       $user = $dados->fetchAll();
             
-            if(count($users) <= 0){
-
-                header('Location: ../View/Teste.php');
+            if(count($user) <= 0){
+                $_SESSION['cadastrado'] = false;
+                header('Location: ../View/login.php');
             }else{
-               // $_SESSION['vendedor_id'] = $user['vendedor_id'];
-                //$_SESSION['nome_vendedor'] = $user['nome'];
+             // $miau = $user[0]
+               // $_SESSION['id'] = $miau['id_usr'];
+               // $_SESSION['nome'] = $miau['nome_usr'];
 
                 header('Location: ../View/cadastro.php');
             }
