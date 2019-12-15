@@ -1,6 +1,7 @@
 <?php
   include("../Model/Notas_Model.php");
   include("../BD/conexao.php");
+  session_start();
   Class Edereco_Control{
   	public $dados;
   	public $conn;

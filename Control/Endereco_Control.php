@@ -1,6 +1,8 @@
 <?php
   include("../Model/Endereco_Model.php");
   include("../BD/conexao.php");
+  session_start();
+  
   Class Edereco_Control{
   	public $dados;
   	public $conn;

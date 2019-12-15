@@ -1,6 +1,7 @@
 <?php
   include("../Model/Usuario_Model.php");
   include("../BD/conexao.php");
+  session_start();
 
   Class Usuario_Control{
   	public $dados;
@@ -38,7 +39,7 @@
       $this->dados->setNome_usr($nome_usr);
       $this->dados->setSenha_usr($senha_usr);
 
-      $sql = "select id_usr, nome_usr from usuario where user = :nome_usr and senha = :senha_usr;";
+      $sql = "select id_usr,nome_usr from usuario where nome_usr = :nome_usr and senha_usr = :senha_usr;";
 
       $d = $this->conexao->Conect();
       $dados = $d->prepare($sql);
@@ -46,13 +47,20 @@
       $dados->bindValue(":senha_usr", $this->dados->getSenha_usr());
       $dados->execute();
       
-      $users = $dados->fetchAll();
-      
-      if(count($users) <= 0){
-          header('Location: ../login.php');
-      }else{
-          header("Location: ../View/Teste.php");
-      }
-  }
+            if($dados->rowCount() == 0){
+
+                header('Location: ../View/Teste.php');
+            }else{
+              session_start();
+              $user= $dados->fetchAll();
+              $_SESSION['id_usr'] = $dados['id_usr'];
+              $_SESSION['nome_usr'] = $dados['nome_usr'];
+
+
+                header('Location: ../View/vendedor/cadastro.php');
+            }
+   
+  
+}
 }
 ?>

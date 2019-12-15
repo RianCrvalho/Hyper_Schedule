@@ -1,6 +1,9 @@
 <?php
   include("../Model/Contato_Model.php");
   include("../BD/conexao.php");
+  
+  session_start();
+
   Class Contato_Control{
   	public $dados;
   	public $conn;
@@ -21,7 +24,7 @@
   	$this->dados->setNome_cont($nome_cont);
     $this->dados->setNumero_con($numero_con);
     $this->dados->setSenha_usr($email_cont);
-  	$sql = "INSERT INTO contato(id_cont,nome_cont,numero_cont,email_cont ) VALUES (:id_usr,:nome_cont,:numero_con,:email_cont);";
+  	$sql = "INSERT INTO contato(id_cont,nome_cont,numero_cont,email_cont) VALUES (:id_usr,:nome_cont,:numero_con,:email_cont);";
   	$d = $this->conn->Conect();
   	$dados = $d->prepare($sql);
   	$dados->bindValue(":id_cont", $this->dados->getNome_usr());
