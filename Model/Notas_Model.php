@@ -21,7 +21,7 @@
 		$this->id_usr = $id_usr;
 	}
 	function getId_usr(){
-		retrun $this->id_usr;
+		return $this->id_usr;
 	} 	
  	function setData($data_nota){
  		$this->data_nota= $data_nota;

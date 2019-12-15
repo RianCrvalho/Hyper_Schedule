@@ -17,25 +17,25 @@ Class Contato_Model{
 		$this->id_cont = $id_cont;
 	}
 	function getId_cont(){
-		retrun $this->id_cont;
+		return $this->id_cont;
 	}
 	function setId_usr($id_usr){
 		$this->id_usr = $id_usr;
 	}
 	function getId_usr(){
-		retrun $this->id_usr;
+		return $this->id_usr;
 	}
 	function setNumero_con($numero_cont){
 		$this->numero_cont = $numero_cont;
 	}
 	function getNumero_con(){
-		retrun $this->numero_cont;
+		return $this->numero_cont;
 	}
 	function setEmail($email_cont){
 		$this->email_cont = $email_cont;
 	}
 	function getEmail(){
-		retrun $this->email_cont;
+		return $this->email_cont;
 	}
 	function setNome_cont($nome_cont){
 		$this->nome_cont= $nome_cont;

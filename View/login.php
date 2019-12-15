@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,21 +7,19 @@
 </head>
 <body>
     <style>
-        *{
-            margin: 0px;
-            padding: 0px;
+        body{margin:1px 10% 1px 10%;}
         }
         header, footer{
             margin: auto;
-            text-align: center;
         }
     </style>
 
- <header>
+ <header align="center">
        <h1>Agenda</h1> 
     </header>
     <main>
- <?php 
+        <?php 
+    
     include("../Control/Usuario_Control.php");
     $usuario = new Usuario_Control(); 
     if (isset ( $_POST [ 'btn-logar' ])) {
@@ -29,14 +28,16 @@
         $usuario->logar($nome_usr, $senha_usr);
         //unset($_SESSION['cadastrado']);
 }
-        if(isset($_SESSION['cadastrado'])){
-         echo "<div class='alert alert-danger' role='alert'>
-                 Usuário ou senha incorreta!</div>";
-           
-}
+       // if($_SESSION['cadastrado']==false){
+       //  echo "<div class='alert alert-danger' role='alert'>
+       //        Usuário ou senha incorreta!</div>";
+       //    
+//}
 
 
-?>
+?> 
+        <h2>Login</h2>
+
         <div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
@@ -56,7 +57,9 @@
         </div>
     </main>
     <footer>
-        <div>
+        <div align="center">
             <p>2019 &copy; Copyright - Todos os direitos reservados | Calango Voador.</p>
         </div>
     </footer>
+</body>
+</html>

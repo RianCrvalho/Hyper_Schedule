@@ -22,7 +22,7 @@
 
   }
 
-  function add($nome_usr,$senha_usr){
+  function Cadastrar($nome_usr,$senha_usr){
   	$this->dados->setNome_usr($nome_usr);
   	$this->dados->setSenha_usr($senha_usr);
   	$sql = "INSERT INTO usuario(nome_usr,senha_usr) VALUES (:nome_usr,:senha_usr);";
@@ -30,8 +30,17 @@
   	$dados = $d->prepare($sql);
   	$dados->bindValue(":nome_usr", $this->dados->getNome_usr());
   	$dados->bindValue(":senha_usr", $this->dados->getSenha_usr());
-  	$dados->execute();
-  	header("Location: ../View/Usuario_View.php");
+  
+            try {
+                $dados->execute();
+                header("Location: ../View/Usuario_View.php");
+                return true;
+            } catch (PDOException $e){
+                echo "Erro: ". $e->getMessage();
+                $_SESSION['cadastrado'] = true;
+                return false;
+            }
+
 
   }
   
@@ -52,11 +61,10 @@
                 $_SESSION['cadastrado'] = false;
                 header('Location: ../View/login.php');
             }else{
-             // $miau = $user[0]
-               // $_SESSION['id'] = $miau['id_usr'];
-               // $_SESSION['nome'] = $miau['nome_usr'];
+             $miau = $user[0];
+              $_SESSION['Usuario_id'] = $miau['id_usr'];
 
-                header('Location: ../View/cadastro.php');
+                header('Location: ../View/Usuario_View.php');
             }
    
   

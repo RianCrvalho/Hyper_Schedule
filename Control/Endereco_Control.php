@@ -1,5 +1,7 @@
 <?php
   include("../Model/Endereco_Model.php");
+  include("../Model/Contato_Model.php");
+  include("../Model/Usuario_Model.php");
   include("../BD/conexao.php");
   session_start();
   

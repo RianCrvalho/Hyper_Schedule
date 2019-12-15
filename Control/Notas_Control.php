@@ -1,8 +1,9 @@
 <?php
+  include("../Model/Usuario_Model.php");
   include("../Model/Notas_Model.php");
   include("../BD/conexao.php");
   session_start();
-  Class Edereco_Control{
+  Class Notas_Control{
   	public $dados;
   	public $conn;
 
@@ -32,7 +33,7 @@
   	$dados->bindValue(":data_nota", $this->dados->getData());
     $dados->bindValue(":nota", $this->dados->getNota());
   	$dados->execute();
-  	header("Location: ../View/Endereco_View.php");
+  	header("Location: ../View/Usuario_View.php");
   }
 
   function del($id_nota){
