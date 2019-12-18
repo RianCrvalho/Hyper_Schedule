@@ -35,15 +35,27 @@ if (isset ( $_POST [ 'btn-add' ])) {
         $data_nota  =  $_POST ['campo_data'];
         $nota  =  $_POST ['campo_nota'];
         $notas->add($Usuario_id,$data_nota, $nota);
+}
+if($_POST['acao']== "edit"){
+  $id = $_POST['id_nota'];
+  $dadosV = $notas->notView($id);
+  foreach($dadosV as $d){
+    $id1 = $d['campo_id'];
+    $data1 = $d['campo_data'];
+    $nota1 = $d['campo_nota'];
+  
 
 }
-if($_POST['acao'] == "del"){
-  $id = $_POST['id'];
+if(isset($_POST['btn-del'])){
+  $id = $_POST[$d['value']];
   $notas->delNota($id);
   echo "<div class='alert alert-primary' role='alert'>
       This is a primary alert—check it out!
   </div>";
 }
+
+}
+
 if (isset($_POST['btn-sair'])) {
 	session_destroy();
 	header('Location:login.php');
@@ -58,8 +70,9 @@ echo "<tr>";
 foreach($dados as $d){
     echo "<td>".$d['data_nota']."</td>";
     echo "<td>".$d['nota']."</td>";
-    echo "<td><form method='POST'> <a href=?acao=edit&id=".$d['id_nota']." onclick='mostrar()'> Editar </a></form></td>";
-    echo "<td> <form method='POST'><button type='submit' id='btn-enviar' name='btn-sair' class='btn btn-info' value='btn2'>Voltar</button>Deletar</a></form></td></td>";
+    echo "<td><a href=?acao=edit&id=".$d['id_nota']."onclick='mostrar()'> Editar </a></td>";
+
+    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -68,23 +81,21 @@ echo "</table>";
 <div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
-                    <input type="hidden" name='id' value="<?php echo @$id1;?>";>
+                    <input type="hidden" name="campo_id" value="<?php echo @$id1;?>">
                     <label for="date">Data:</label>
-                    <input type="date" id="date" name="campo_data" class="form-control">
+                    <input type="date" id="date" name="campo_data" class="form-control" value="<?php echo @$data1;?>" required>
                 </div>
                 <div class="form-group">
                     <label for="pass">Nota</label>
-                    <input type="text" id="pass" name="campo_nota" class="form-control">
+                    <input type="text" id="pass" name="campo_nota" class="form-control" value="<?php echo @$nota1;?>" required>
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">adicionar</button>
+                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
                 </div>
             </form>
         </div>
         <style>
-    .format{
-      visibility: hidden;
-    }
 </main>
 <footer>
   <div align="center">

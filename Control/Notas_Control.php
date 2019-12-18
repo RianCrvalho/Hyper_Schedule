@@ -37,8 +37,7 @@
   }
 
   function delNota($id_nota){
-    $this->dados->setId_nota($id_usr);
-    $sql = "DELETE FROM notas WHERE id_nota = :id_nota";
+    $sql = "DELETE FROM notas WHERE id_nota = :id_nota;";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_nota", $id_nota);
@@ -47,7 +46,7 @@
   }
 
     function upd($id_usr, $id_nota, $data_nota,$nota){
-    $sql = "UPDATE notas  SET id_usr = :id_usr, data_nota = :data_nota, nota = :nota WHERE id_nota = :id_nota";
+    $sql = "UPDATE notas  SET id_usr = :id_usr, data_nota = :data_nota, nota = :nota WHERE id_nota = :id_nota;";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_usr", $id_usr);
