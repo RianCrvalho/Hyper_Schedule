@@ -2,19 +2,16 @@
 <html lang="pt-br">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/estiloTelaLogin.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
 </head>
 <body>
     <style>
-        body{margin:1px 10% 1px 10%;}
-        }
-        header, footer{
-            margin: auto;
-        }
     </style>
 
  <header align="center">
        <h1>Agenda</h1> 
+       <h2>~Login~</h2>
     </header>
     <main>
  <?php 
@@ -27,25 +24,16 @@
         $senha_usr  =  $_POST ['campo_senha'];
         $usuario->logar($nome_usr, $senha_usr);
 }
-//echo "string".$_SESSION['cadastrado'];
 
 if ((@$_SESSION['cadastrado'])=="erro") {
-                echo "<div class='alert alert-danger' role='alert'> Usuário ou senha incorreta!</div>";
+                echo "<div align='center' class='alert alert-danger' role='alert'> Usuário ou senha incorreta!</div>";
                
-               //unset($_SESSION['cadastrado']);
                
  } else if((@$_SESSION['cadastrado'])=="certo"){
     unset($_SESSION['cadastrado']);
- }
-
-
-       // if($_SESSION['cadastrado']=false){
-         //echo "<div class='alert alert-danger' role='alert'>
-           //    Usuário ou senha incorreta!</div>";    
+ } 
 
 ?> 
-        <h2>Login</h2>
-
         <div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
@@ -59,13 +47,13 @@ if ((@$_SESSION['cadastrado'])=="erro") {
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-logar" class="btn btn-success" value="btn1">Enviar</button>
                     &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
-                    Não está cadastrado: &nbsp<a href="cadastro.php">Cadastrar</a>
+                    &nbsp<a href="cadastro.php">Cadastrar-se</a>
                 </div>
             </form>
         </div>
     </main>
     <footer>
-        <div align="center">
+        <div align="right">
             <p>2019 &copy; Copyright - Todos os direitos reservados | Calango Voador.</p>
         </div>
     </footer>

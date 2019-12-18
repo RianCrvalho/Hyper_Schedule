@@ -1,0 +1,45 @@
+
+body{
+	background-image: url("../Imagens/fundo-um.jpg");
+	font-family: fantasy;
+
+}
+
+h4#color-do-linkCadastro{
+	color: black;
+	text-align: center;
+	font-family: cursive;
+}
+
+input{
+	display:block;
+	height:25px; 
+	width:400px;
+	margin: 10px;
+	border-radius: 10px;
+	border:0.5px inset black;
+	padding: 4px 20px ;
+	font-size: 15px;
+	color: black gray;
+
+}
+
+div#div_login{
+
+	width: 420px;
+	margin: 250px 150px 0px auto;
+}
+
+/*div#div_buttons btn-enviar{
+	display:block;
+	height:25px; 
+	width:400px;
+	margin: 10px;
+	padding: 4px 20px ;
+	font-size: 15px;
+	color: black gray;
+}*/
+
+a{
+	text-decoration: none;
+}

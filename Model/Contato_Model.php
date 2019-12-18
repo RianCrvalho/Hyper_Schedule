@@ -3,7 +3,7 @@ Class Contato_Model{
 	public $id_cont;
 	public $id_usr;
 	public $nome_cont;
-	public $numero_con;
+	public $numero_cont;
 	public $email_cont;
 
 	function __construct(){
@@ -12,6 +12,7 @@ Class Contato_Model{
 		$this->nome_cont = "Sem nome";
 		$this->numero_cont = "sem numero";
 		$this->endereco = "Sem endereco"; 
+		$this->email_cont = "sem email"; 
 	}
 	function setId_cont($id_cont){
 		$this->id_cont = $id_cont;

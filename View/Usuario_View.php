@@ -19,7 +19,7 @@
 <main>
 	 
 	<form method="POST" align="right">
-	<button type="submit" id="btn-enviar" name="btn-sair" class="btn btn-info" value="btn2">Voltar</button>
+	<button type="submit" id="btn-enviar" name="btn-sair" class="btn btn-info" value="btn2">Sair</button>
 	</form>
 	<h2>Anotações:</h2>
 
@@ -36,23 +36,15 @@ if (isset ( $_POST [ 'btn-add' ])) {
         $nota  =  $_POST ['campo_nota'];
         $notas->add($Usuario_id,$data_nota, $nota);
 }
-if($_POST['acao']== "edit"){
-  $id = $_POST['id_nota'];
-  $dadosV = $notas->notView($id);
-  foreach($dadosV as $d){
-    $id1 = $d['campo_id'];
-    $data1 = $d['campo_data'];
-    $nota1 = $d['campo_nota'];
-  
 
-}
+
 if(isset($_POST['btn-del'])){
   $id = $_POST[$d['value']];
   $notas->delNota($id);
   echo "<div class='alert alert-primary' role='alert'>
-      This is a primary alert—check it out!
+      Apagado!
   </div>";
-}
+
 
 }
 
@@ -72,7 +64,7 @@ foreach($dados as $d){
     echo "<td>".$d['nota']."</td>";
     echo "<td><a href=?acao=edit&id=".$d['id_nota']."onclick='mostrar()'> Editar </a></td>";
 
-    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
+    echo "<td> <form method='POST'><button type='submit' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -87,15 +79,75 @@ echo "</table>";
                 </div>
                 <div class="form-group">
                     <label for="pass">Nota</label>
-                    <input type="text" id="pass" name="campo_nota" class="form-control" value="<?php echo @$nota1;?>" required>
+                    <textarea  id="pass" name="campo_nota" class="form-control" required>
+                        </textarea>
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">adicionar</button>
                     <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
+                    <p></p>
+                    <p></p>
+                </div>
+            </form>
+            <h2>Contatos:</h2>
+        </div>
+        <?php
+include("../Control/Contato_Control.php");
+$contato = new Contato_Control();
+$dados = $contato->contView($Usuario_id);
+if($_GET['acao'] == "edit"){
+    echo "edioyoyyoyoyo";
+}
+if (isset ( $_POST [ 'btn-ad' ])) {
+        $nome_cont  =  $_POST ['campo_nome'];
+        $numero_cont  =  $_POST ['campo_numero'];
+        $email_cont = $_POST['campo_email'];
+        $contato->addCont($Usuario_id,$nome_cont, $numero_cont,$email_cont);
+}
+
+echo "<table class='table table-striped table-hover' border=1 align=center>";
+echo "<tr>";
+echo "<th class='bg-success'> Nome: </th>
+<th class='bg-success'> Numero:</th>
+<th class='bg-success'> Email:</th>
+<th class='bg-success'> Editar</th><th class='bg-success'> Deletar </th>";
+echo "</tr>";
+echo "<tr>";
+foreach($dados as $d){
+    echo "<td>".$d['nome_cont']."</td>";
+    echo "<td>".$d['numero_cont']."</td>";
+    echo "<td>".$d['email_cont']."</td>";
+    echo "<td><a href=?acao=edit&id=".$d['id_cont']."onclick='mostrar()'> Editar </a></td>";
+
+    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_cont']." class='btn btn-link'>Deletar</button></form></td></td>";
+    echo "</tr>";
+}
+echo "</table>";
+
+?>
+<div id="div_login" class="container">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="hidden" name="campo_id">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="campo_nome" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="numero">Numero:</label>
+                    <input type="text" id="pass" name="campo_numero" class="form-control" required>   
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="pass" name="campo_email" class="form-control">
+                    
+                </div>
+                <div id="div_buttons">
+                    <button type="submit" id="btn-enviar" name="btn-ad" class="btn btn-success" value="btn1">adicionar</button>
+                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
                 </div>
             </form>
         </div>
-        <style>
+
 </main>
 <footer>
   <div align="center">

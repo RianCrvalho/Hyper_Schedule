@@ -1,9 +1,6 @@
 <?php
-  include("../Model/Usuario_Model.php");
   include("../Model/Contato_Model.php");
-  include("../BD/conexao.php");
   
-  session_start();
 
   Class Contato_Control{
   	public $dados;
@@ -12,39 +9,39 @@
   	$this->dados = new Contato_Model();
   	$this->conn = new conexao();
   }
-  function contView($id_cont){
-  	$sql = "SELECT * FROM conato WHERE id_cont = :id_cont";
+  function contView($id_usr){
+  	$sql = "SELECT * FROM contato WHERE id_usr = :id_usr;";
   	$d = $this->conn->Conect();
   	$dados =$d->prepare($sql);
-    $dados->bindValue(":id_cont", $id_cont);
+    $dados->bindValue(":id_usr", $id_usr);
   	$dados->execute();
   	return $dados;
   }
-  function addCont($id_usr,$nome_cont,$numero_con,$email_cont){
+  function addCont($id_usr,$nome_cont,$numero_cont,$email_cont){
   	$this->dados->setId_usr($id_usr);
   	$this->dados->setNome_cont($nome_cont);
-    $this->dados->setNumero_con($numero_con);
-    $this->dados->setSenha_usr($email_cont);
-  	$sql = "INSERT INTO contato(id_cont,nome_cont,numero_cont,email_cont) VALUES (:id_usr,:nome_cont,:numero_con,:email_cont);";
+    $this->dados->setNumero_con($numero_cont);
+    $this->dados->setEmail($email_cont);
+  	$sql = "INSERT INTO contato(id_usr,nome_cont,numero_cont,email_cont) VALUES (:id_usr,:nome_cont,:numero_cont,:email_cont);";
   	$d = $this->conn->Conect();
   	$dados = $d->prepare($sql);
-  	$dados->bindValue(":id_cont", $this->dados->getNome_usr());
-  	$dados->bindValue(":nome_cont", $this->dados->getSenha_usr());
-    $dados->bindValue(":numero_cont", $this->dados->getSenha_usr());
-    $dados->bindValue(":email_cont", $this->dados->getSenha_usr());
+  	$dados->bindValue(":id_usr", $this->dados->getId_usr());
+  	$dados->bindValue(":nome_cont", $this->dados->getNome_cont());
+    $dados->bindValue(":numero_cont", $this->dados->getNumero_con());
+    $dados->bindValue(":email_cont", $this->dados->getEmail());
   	$dados->execute();
-  	header("Location: ../View/Contato_View.php");
+  	header("Location: ../View/Usuario_View.php");
   }
   function delCont($id_cont){
-    $sql = "DELETE FROM contato WHERE id_cont  = :id_cont";
+    $sql = "DELETE FROM contato WHERE id_cont  = :id_cont;";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_cont", $this->dados->getId_cont());
     $dados->execute();
-    header("Location: ../View/Contato_View.php");
+    header("Location: ../View/Usuario_View.php");
   }
     function upd($id_cont, $nome_cont,$numero_con,$email_cont){
-    $sql = "UPDATE contato  SET nome_cont = :nome_cont, numero_cont = :numero_con, email_cont = :email_cont WHERE id_cont = :id_cont";
+    $sql = "UPDATE contato  SET nome_cont = :nome_cont, numero_cont = :numero_con, email_cont = :email_cont WHERE id_cont = :id_cont;";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
     $dados->bindValue(":id_cont", $id_cont);
@@ -52,7 +49,7 @@
     $dados->bindValue(":numero_con", $numero_con);
     $dados->bindValue(":email_cont", $email_cont);
     $dados->execute();
-    header("Location: ../View/Contato_View.php");
+    header("Location: ../View/Usuario_View.php");
   }
 }
 ?>

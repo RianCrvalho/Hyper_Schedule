@@ -1,6 +1,6 @@
 <?php
-  include("../Model/Usuario_Model.php");
   include("../Model/Notas_Model.php");
+  include("../Model/Usuario_Model.php");
   include("../BD/conexao.php");
   session_start();
   Class Notas_Control{
@@ -56,16 +56,16 @@
     $dados->execute();
     header("Location: ../View/Usuario_View.php");
   }
+}
+   //     @$acao = $_REQUEST['acao'];
+     // if($acao == "deletar"){
+       // $id_nota = $_POST['del_id'];
 
-        function deletar($id_nota){
-       if($acao == "deletar"){
-        $id_nota = $_POST['del_id'];
+        //$nota = new Notas_Control();
 
-        $nota = new Notas_Control();
-
-        $nota->delNota($id_nota);
+        //$nota->delNota($id_nota);
             
-        header('Location: ../View/Usuario_View.php');
-    }
-}}
+        //header('Location: ../View/Usuario_View.php');
+    
+//}
 ?>
