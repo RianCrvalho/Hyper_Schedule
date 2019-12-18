@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-	<title>Usuario</title>
-	<link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/estiloTelaLogin.css">
 </head>
 <body>
+<<<<<<< HEAD
 	   <style>
         body{margin:1px 10% 1px 10%;}
         }
@@ -45,37 +46,22 @@ if(isset($_POST['btn-del'])){
       Apagado!
   </div>";
 
-
+ 
+    include("../Control/Usuario_Control.php");
+    $usuario = new Usuario_Control(); 
+    if (isset ( $_POST [ 'btn-logar' ])) {
+        $nome_usr  =  $_POST ['campo_usuario'];
+        $senha_usr  =  $_POST ['campo_senha'];
+        $usuario->logar($nome_usr, $senha_usr);
 }
-
-if (isset($_POST['btn-sair'])) {
-	session_destroy();
-	header('Location:login.php');
-}
-echo "<table class='table table-striped table-hover' border=1 align=center>";
-echo "<tr>";
-echo "<th class='bg-success'> Data: </th>
-<th class='bg-success'> Nota: </th>
-<th class='bg-success'> Editar</th><th class='bg-success'> Deletar </th>";
-echo "</tr>";
-echo "<tr>";
-foreach($dados as $d){
-    echo "<td>".$d['data_nota']."</td>";
-    echo "<td>".$d['nota']."</td>";
-    echo "<td><a href=?acao=edit&id=".$d['id_nota']."onclick='mostrar()'> Editar </a></td>";
-
-    echo "<td> <form method='POST'><button type='submit' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
-    echo "</tr>";
-}
-echo "</table>";
 
 ?>
-<div id="div_login" class="container">
+
+        <div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
-                    <input type="hidden" name="campo_id" value="<?php echo @$id1;?>">
-                    <label for="date">Data:</label>
-                    <input type="date" id="date" name="campo_data" class="form-control" value="<?php echo @$data1;?>" required>
+                    <label for="user">Usuário:</label>
+                    <input type="text" id="user" name="campo_usuario" class="form-control" required="">
                 </div>
                 <div class="form-group">
                     <label for="pass">Nota</label>
@@ -87,6 +73,13 @@ echo "</table>";
                     <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
                     <p></p>
                     <p></p>
+                    <label for="pass">Senha:</label>
+                    <input type="password" id="pass" name="campo_senha" class="form-control" required="">
+                </div>
+                <div id="div_buttons">
+                    <button type="submit" id="btn-enviar" name="btn-logar" value="btn1">Enviar</button>
+                    &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
+                    &nbsp<a href="cadastro.php">Cadastre-se</a>
                 </div>
             </form>
             <h2>Contatos:</h2>
@@ -151,10 +144,13 @@ echo "</table>";
 </main>
 <footer>
   <div align="center">
+=======
+        </div>
+    </main>
+    <footer>
+        <div align="right">
             <p>2019 &copy; Copyright - Todos os direitos reservados | Calango Voador.</p>
         </div>
-</footer>
-
+    </footer>
 </body>
 </html>
-
