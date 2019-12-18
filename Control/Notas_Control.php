@@ -20,6 +20,14 @@
   	$dados->execute();
   	return $dados;
   }
+  function notView_id($id_nota){
+    $sql = "SELECT * FROM notas WHERE id_nota =:id_nota";
+    $d = $this->conn->Conect();
+    $dados =$d->prepare($sql);
+    $dados->bindValue(":id_nota", $id_nota);
+    $dados->execute();
+    return $dados;
+  }
 
 
   function add($id_usr,$data_nota,$nota){
@@ -45,14 +53,13 @@
     header("Location: ../View/Usuario_View.php");
   }
 
-    function upd($id_usr, $id_nota, $data_nota,$nota){
-    $sql = "UPDATE notas  SET id_usr = :id_usr, data_nota = :data_nota, nota = :nota WHERE id_nota = :id_nota;";
+    function updNota($id_nota, $data_nota,$nota){
+    $sql = "UPDATE notas  SET data_nota = :data_nota, nota = :nota WHERE id_nota = :id_nota;";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
-    $dados->bindValue(":id_usr", $id_usr);
+    $dados->bindValue(":id_nota", $id_nota);
     $dados->bindValue(":data_nota", $data_nota);
     $dados->bindValue(":nota", $nota);
-    $dados->bindValue(":id_nota", $id_nota);
     $dados->execute();
     header("Location: ../View/Usuario_View.php");
   }

@@ -31,25 +31,37 @@ echo "<h3><p align='right'>Bem vindo Usuario:".@$_SESSION['Usuario_nome']."</p><
 $notas = new Notas_Control();
 $dados= $notas->notView($Usuario_id);
 
-if (isset ( $_POST [ 'btn-add' ])) {
+if ( @$_POST [ 'btn-add' ]== 'btn1') {
         $data_nota  =  $_POST ['campo_data'];
         $nota  =  $_POST ['campo_nota'];
         $notas->add($Usuario_id,$data_nota, $nota);
 }
 
 
-if(isset($_POST['btn-del'])){
-  $id = $_POST[$d['value']];
+if(@$_GET['acao'] == "del"){
+  $id = $_GET['id'];
   $notas->delNota($id);
   echo "<div class='alert alert-primary' role='alert'>
-      Apagado!
+      This is a primary alert—check it out!
   </div>";
 }
-if(@$_GET['acao'] == "edit"){
-    echo "edioyoyyoyoyo";
+
+if(@$_GET['acao']== "edit"){
+  $id = $_GET['id'];
+  $dadosV = $notas->notView_id($id);
+  foreach($dadosV as $d){
+    $id1 = $d['id_nota'];
+    $data1 = $d['data_nota'];
+    $nota1 = $d['nota'];
+  }}
+
+if(@$_POST['btn-add']== 'btn2'){
+  $id_n = $_POST['id_nota'];
+  $data = $_POST['campo_data'];
+  $nota = $_POST['campo_nota'];
+  echo $id_n;
+  $notas->updNota($id_n,$data,$nota);
 }
-
-
 
 if (isset($_POST['btn-sair'])) {
     session_destroy();
@@ -67,7 +79,7 @@ foreach($dados as $d){
     echo "<td>".$d['nota']."</td>";
     echo "<td><a href=?acao=edit&id=".$d['id_nota']."onclick='mostrar()'> Editar </a></td>";
 
-    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
+     echo "<td> <a href=?acao=del&id=".$d['id_nota'].">Deletar</a></td></td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -80,12 +92,12 @@ echo "</table>";
                     <input type="date" id="date" name="campo_data" class="form-control" value="<?php echo @$data1;?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="pass">Nota</label>
-                    <input type="input" id="pass" name="campo_nota" class="form-control" value="<?php echo @$nota1;?>" required>
+                    <label for="pass">Nota:</label>
+                    <input type="text" id="pass" name="campo_nota" class="form-control" value="<?php echo @$nota1;?>" required></input>
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">adicionar</button>
-                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
+                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn2">Atualizar</button>
                     <p></p>
                     <p></p>
                 </div>
@@ -99,10 +111,31 @@ include("../Control/Contato_Control.php");
 $contato = new Contato_Control();
 $dados = $contato->contView($Usuario_id);
 
-if(@$_GET['acao'] == "edit"){
-    echo "edioyoyyoyoyo";
+if(@$_GET['acao'] == "del1"){
+  $idC = $_GET['id'];
+  $contato->delCont($idC);
+  echo "<div class='alert alert-primary' role='alert'>
+      This is a primary alert—check it out!
+  </div>";
 }
-if (isset ( $_POST [ 'btn-ad' ])) {
+if(@$_GET['acao']== "edit1"){
+  $id = @$_GET['id'];
+  $dadosV = $contato->contView_id($id);
+  foreach($dadosV as $d){
+    $id1 = $d['id_cont'];
+    $nome1 = $d['nome_cont'];
+    $numero1 = $d['numero_cont'];
+    $email1 = $d['email_cont'];
+  }}
+  if(@$_POST['btn-add']== 'btn4'){
+  $id = $_POST['id_cont'];
+  $nome = $_POST['campo_nome'];
+  $numero = $_POST['campo_numero'];
+  $email = $_POST['campo_email'];
+  echo $id;
+  $contato->updCont($id,$nome, $numero,$email);
+}
+if ( @$_POST [ 'btn-add' ]== 'btn3') {
         $nome_cont  =  $_POST ['campo_nome'];
         $numero_cont  =  $_POST ['campo_numero'];
         $email_cont = $_POST['campo_email'];
@@ -121,9 +154,9 @@ foreach($dados as $d){
     echo "<td>".$d['nome_cont']."</td>";
     echo "<td>".$d['numero_cont']."</td>";
     echo "<td>".$d['email_cont']."</td>";
-    echo "<td><a href=?acao=edit1&id1=".$d['id_cont']."onclick='mostrar()'> Editar </a></td>";
+    echo "<td><a href=?acao=edit1&id=".$d['id_cont']."> Editar </a></td>";
 
-    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_cont']." class='btn btn-link'>Deletar</button></form></td></td>";
+    echo "<td> <a href=?acao=del1&id=".$d['id_cont'].">Deletar</a></td></td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -132,21 +165,21 @@ echo "</table>";
 <div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
-                    <input type="hidden" name="campo_id">
+                    <input type="hidden" name="campo_id" value="<?php echo @$id1;?>">
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="campo_nome" class="form-control" required>
+                    <input type="text" id="nome" name="campo_nome" class="form-control" value="<?php echo @$nome1;?>" required>
                 </div>
                 <div class="form-group">
                     <label for="pass">Numero:</label>
-                    <input type="text" id="pass" name="campo_numero" class="form-control" required>
+                    <input type="text" id="pass" name="campo_numero" class="form-control" value="<?php echo @$numero1;?>" required>
                 </div>
                  <div class="form-group">
                     <label for="pass">Email:</label>
-                    <input type="email" id="pass" name="campo_email" class="form-control" required>
+                    <input type="email" id="pass" name="campo_email" class="form-control" value="<?php echo @$email1;?>" required>
                 </div>
                 <div id="div_buttons">
-                    <button type="submit" id="btn-enviar" name="btn-ad" class="btn btn-success" value="btn1">adicionar</button>
-                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
+                    <button type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn3">adicionar</button>
+                    <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn4">Atualizar</button>
                 </div>
             </form>
         </div>
