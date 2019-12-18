@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,22 +17,31 @@
        <h1>Agenda</h1> 
     </header>
     <main>
-        <?php 
-    
+ <?php 
+    //session_start();
+    //session_destroy();
     include("../Control/Usuario_Control.php");
     $usuario = new Usuario_Control(); 
     if (isset ( $_POST [ 'btn-logar' ])) {
         $nome_usr  =  $_POST ['campo_usuario'];
         $senha_usr  =  $_POST ['campo_senha'];
         $usuario->logar($nome_usr, $senha_usr);
-        //unset($_SESSION['cadastrado']);
 }
-       // if($_SESSION['cadastrado']==false){
-       //  echo "<div class='alert alert-danger' role='alert'>
-       //        Usuário ou senha incorreta!</div>";
-       //    
-//}
+//echo "string".$_SESSION['cadastrado'];
 
+if ((@$_SESSION['cadastrado'])=="erro") {
+                echo "<div class='alert alert-danger' role='alert'> Usuário ou senha incorreta!</div>";
+               
+               //unset($_SESSION['cadastrado']);
+               
+ } else if((@$_SESSION['cadastrado'])=="certo"){
+    unset($_SESSION['cadastrado']);
+ }
+
+
+       // if($_SESSION['cadastrado']=false){
+         //echo "<div class='alert alert-danger' role='alert'>
+           //    Usuário ou senha incorreta!</div>";    
 
 ?> 
         <h2>Login</h2>
@@ -42,16 +50,16 @@
             <form method="POST">
                 <div class="form-group">
                     <label for="user">Usuário:</label>
-                    <input type="text" id="user" name="campo_usuario" class="form-control">
+                    <input type="text" id="user" name="campo_usuario" class="form-control" required="">
                 </div>
                 <div class="form-group">
                     <label for="pass">Senha:</label>
-                    <input type="password" id="pass" name="campo_senha" class="form-control">
+                    <input type="password" id="pass" name="campo_senha" class="form-control" required="">
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-logar" class="btn btn-success" value="btn1">Enviar</button>
                     &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
-                    <a href="cadastro.php">Cadastrar</a>
+                    Não está cadastrado: &nbsp<a href="cadastro.php">Cadastrar</a>
                 </div>
             </form>
         </div>

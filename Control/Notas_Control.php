@@ -36,13 +36,14 @@
   	header("Location: ../View/Usuario_View.php");
   }
 
-  function del($id_nota){
-    $sql = "DELETE FROM notas WHERE id_nota = :id_nata";
+  function delNota($id_nota){
+    $this->dados->setId_nota($id_usr);
+    $sql = "DELETE FROM notas WHERE id_nota = :id_nota";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);
-    $dados->bindValue(":id_nota", $id_nota());
+    $dados->bindValue(":id_nota", $id_nota);
     $dados->execute();
-    header("Location: ../View/Notas_View.php");
+    header("Location: ../View/Usuario_View.php");
   }
 
     function upd($id_usr, $id_nota, $data_nota,$nota){
@@ -54,8 +55,18 @@
     $dados->bindValue(":nota", $nota);
     $dados->bindValue(":id_nota", $id_nota);
     $dados->execute();
-    header("Location: ../View/Endereco_View.php");
+    header("Location: ../View/Usuario_View.php");
   }
 
-}
+        function deletar($id_nota){
+       if($acao == "deletar"){
+        $id_nota = $_POST['del_id'];
+
+        $nota = new Notas_Control();
+
+        $nota->delNota($id_nota);
+            
+        header('Location: ../View/Usuario_View.php');
+    }
+}}
 ?>

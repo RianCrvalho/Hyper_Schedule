@@ -20,7 +20,7 @@
   	$dados->execute();
   	return $dados;
   }
-  function add($id_usr,$nome_cont,$numero_con,$email_cont){
+  function addCont($id_usr,$nome_cont,$numero_con,$email_cont){
   	$this->dados->setId_usr($id_usr);
   	$this->dados->setNome_cont($nome_cont);
     $this->dados->setNumero_con($numero_con);
@@ -35,7 +35,7 @@
   	$dados->execute();
   	header("Location: ../View/Contato_View.php");
   }
-  function del($id_cont){
+  function delCont($id_cont){
     $sql = "DELETE FROM contato WHERE id_cont  = :id_cont";
     $d = $this->conn->Conect();
     $dados = $d->prepare($sql);

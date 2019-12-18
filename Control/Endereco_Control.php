@@ -24,7 +24,7 @@
   }
 
 
-  function add($id_cont,$rua,$numero,$cep){
+  function addEnd($id_cont,$rua,$numero,$cep){
   	$this->dados->setId_cont($id_cont);
   	$this->dados->setRua($rua);
     $this->dados->setNumero_end($numero);
