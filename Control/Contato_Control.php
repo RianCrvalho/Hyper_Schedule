@@ -20,14 +20,14 @@
   function addCont($id_usr,$nome_cont,$numero_cont,$email_cont){
   	$this->dados->setId_usr($id_usr);
   	$this->dados->setNome_cont($nome_cont);
-    $this->dados->setNumero_con($numero_cont);
+    $this->dados->setNumero_cont($numero_cont);
     $this->dados->setEmail($email_cont);
   	$sql = "INSERT INTO contato(id_usr,nome_cont,numero_cont,email_cont) VALUES (:id_usr,:nome_cont,:numero_cont,:email_cont);";
   	$d = $this->conn->Conect();
   	$dados = $d->prepare($sql);
   	$dados->bindValue(":id_usr", $this->dados->getId_usr());
   	$dados->bindValue(":nome_cont", $this->dados->getNome_cont());
-    $dados->bindValue(":numero_cont", $this->dados->getNumero_con());
+    $dados->bindValue(":numero_cont", $this->dados->getNumero_cont());
     $dados->bindValue(":email_cont", $this->dados->getEmail());
   	$dados->execute();
   	header("Location: ../View/Usuario_View.php");

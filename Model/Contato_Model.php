@@ -26,10 +26,10 @@ Class Contato_Model{
 	function getId_usr(){
 		return $this->id_usr;
 	}
-	function setNumero_con($numero_cont){
+	function setNumero_cont($numero_cont){
 		$this->numero_cont = $numero_cont;
 	}
-	function getNumero_con(){
+	function getNumero_cont(){
 		return $this->numero_cont;
 	}
 	function setEmail($email_cont){

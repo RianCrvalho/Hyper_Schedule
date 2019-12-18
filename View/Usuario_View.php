@@ -2,10 +2,9 @@
 <html lang="pt-br">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../css/estiloTelaLogin.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
 </head>
 <body>
-<<<<<<< HEAD
 	   <style>
         body{margin:1px 10% 1px 10%;}
         }
@@ -45,50 +44,62 @@ if(isset($_POST['btn-del'])){
   echo "<div class='alert alert-primary' role='alert'>
       Apagado!
   </div>";
-
- 
-    include("../Control/Usuario_Control.php");
-    $usuario = new Usuario_Control(); 
-    if (isset ( $_POST [ 'btn-logar' ])) {
-        $nome_usr  =  $_POST ['campo_usuario'];
-        $senha_usr  =  $_POST ['campo_senha'];
-        $usuario->logar($nome_usr, $senha_usr);
+}
+if(@$_GET['acao'] == "edit"){
+    echo "edioyoyyoyoyo";
 }
 
-?>
 
-        <div id="div_login" class="container">
+
+if (isset($_POST['btn-sair'])) {
+    session_destroy();
+    header('Location:login.php');
+}
+echo "<table class='table table-striped table-hover' border=1 align=center>";
+echo "<tr>";
+echo "<th class='bg-success'> Data: </th>
+<th class='bg-success'> Nota: </th>
+<th class='bg-success'> Editar</th><th class='bg-success'> Deletar </th>";
+echo "</tr>";
+echo "<tr>";
+foreach($dados as $d){
+    echo "<td>".$d['data_nota']."</td>";
+    echo "<td>".$d['nota']."</td>";
+    echo "<td><a href=?acao=edit&id=".$d['id_nota']."onclick='mostrar()'> Editar </a></td>";
+
+    echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_nota']." class='btn btn-link'>Deletar</button></form></td></td>";
+    echo "</tr>";
+}
+echo "</table>";
+?>
+<div id="div_login" class="container">
             <form method="POST">
                 <div class="form-group">
-                    <label for="user">Usuário:</label>
-                    <input type="text" id="user" name="campo_usuario" class="form-control" required="">
+                    <input type="hidden" name="campo_id" value="<?php echo @$id1;?>">
+                    <label for="date">Data:</label>
+                    <input type="date" id="date" name="campo_data" class="form-control" value="<?php echo @$data1;?>" required>
                 </div>
                 <div class="form-group">
                     <label for="pass">Nota</label>
-                    <textarea  id="pass" name="campo_nota" class="form-control" required>
-                        </textarea>
+                    <input type="input" id="pass" name="campo_nota" class="form-control" value="<?php echo @$nota1;?>" required>
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">adicionar</button>
                     <button align='right' type="submit" id="btn-enviar" name="btn-add" class="btn btn-success" value="btn1">Atualizar</button>
                     <p></p>
                     <p></p>
-                    <label for="pass">Senha:</label>
-                    <input type="password" id="pass" name="campo_senha" class="form-control" required="">
-                </div>
-                <div id="div_buttons">
-                    <button type="submit" id="btn-enviar" name="btn-logar" value="btn1">Enviar</button>
-                    &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp
-                    &nbsp<a href="cadastro.php">Cadastre-se</a>
                 </div>
             </form>
+
+             
             <h2>Contatos:</h2>
         </div>
-        <?php
+ <?php
 include("../Control/Contato_Control.php");
 $contato = new Contato_Control();
 $dados = $contato->contView($Usuario_id);
-if($_GET['acao'] == "edit"){
+
+if(@$_GET['acao'] == "edit"){
     echo "edioyoyyoyoyo";
 }
 if (isset ( $_POST [ 'btn-ad' ])) {
@@ -110,7 +121,7 @@ foreach($dados as $d){
     echo "<td>".$d['nome_cont']."</td>";
     echo "<td>".$d['numero_cont']."</td>";
     echo "<td>".$d['email_cont']."</td>";
-    echo "<td><a href=?acao=edit&id=".$d['id_cont']."onclick='mostrar()'> Editar </a></td>";
+    echo "<td><a href=?acao=edit1&id1=".$d['id_cont']."onclick='mostrar()'> Editar </a></td>";
 
     echo "<td> <form method='POST'><button type='input' name='btn-del' value=".$d['id_cont']." class='btn btn-link'>Deletar</button></form></td></td>";
     echo "</tr>";
@@ -126,13 +137,12 @@ echo "</table>";
                     <input type="text" id="nome" name="campo_nome" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="numero">Numero:</label>
-                    <input type="text" id="pass" name="campo_numero" class="form-control" required>   
+                    <label for="pass">Numero:</label>
+                    <input type="text" id="pass" name="campo_numero" class="form-control" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="pass" name="campo_email" class="form-control">
-                    
+                 <div class="form-group">
+                    <label for="pass">Email:</label>
+                    <input type="email" id="pass" name="campo_email" class="form-control" required>
                 </div>
                 <div id="div_buttons">
                     <button type="submit" id="btn-enviar" name="btn-ad" class="btn btn-success" value="btn1">adicionar</button>
@@ -144,13 +154,9 @@ echo "</table>";
 </main>
 <footer>
   <div align="center">
-=======
-        </div>
-    </main>
-    <footer>
-        <div align="right">
             <p>2019 &copy; Copyright - Todos os direitos reservados | Calango Voador.</p>
         </div>
-    </footer>
+</footer>
+
 </body>
 </html>
