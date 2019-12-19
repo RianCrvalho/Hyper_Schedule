@@ -56,7 +56,7 @@ if(@$_GET['acao']== "edit"){
   }}
 
 if(@$_POST['btn-add']== 'btn2'){
-  $id_n = $_POST['id_nota'];
+  $id_n = $_POST['campo_id'];
   $data = $_POST['campo_data'];
   $nota = $_POST['campo_nota'];
   echo $id_n;
@@ -128,7 +128,7 @@ if(@$_GET['acao']== "edit1"){
     $email1 = $d['email_cont'];
   }}
   if(@$_POST['btn-add']== 'btn4'){
-  $id = $_POST['id_cont'];
+  $id = $_POST['campo_id'];
   $nome = $_POST['campo_nome'];
   $numero = $_POST['campo_numero'];
   $email = $_POST['campo_email'];
